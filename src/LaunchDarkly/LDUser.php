@@ -87,7 +87,7 @@ class LDUser
      * @ignore
      * @return mixed
      */
-    public function getValueForEvaluation(?string $attr): mixed
+    public function getValueForEvaluation(?string $attr)
     {
         if (is_null($attr)) {
             return null;

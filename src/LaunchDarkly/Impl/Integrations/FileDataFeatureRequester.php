@@ -21,7 +21,7 @@ class FileDataFeatureRequester implements FeatureRequester
     /**
      * @param array|string $filePaths
      */
-    public function __construct(array|string $filePaths)
+    public function __construct($filePaths)
     {
         $this->_filePaths = is_array($filePaths) ? $filePaths : [$filePaths];
         $this->_flags = [];
@@ -107,7 +107,7 @@ class FileDataFeatureRequester implements FeatureRequester
         }
     }
 
-    private function tryToAdd(array &$array, string $key, mixed $item, string $kind): void
+    private function tryToAdd(array &$array, string $key, $item, string $kind): void
     {
         if (isset($array[$key])) {
             throw new \InvalidArgumentException("File data contains more than one " . $kind . " with key: " . $key);

@@ -53,7 +53,7 @@ class FlagRuleBuilder
      * @param mixed[] $values values to compare to
      * @return FlagRuleBuilder the rule builder
      */
-    public function andMatch(string $attribute, mixed ...$values)
+    public function andMatch(string $attribute, ...$values)
     {
         return $this->andMatchContext(LDContext::DEFAULT_KIND, $attribute, ...$values);
     }
@@ -74,7 +74,7 @@ class FlagRuleBuilder
      * @param mixed[] $values values to compare to
      * @return FlagRuleBuilder the rule builder
      */
-    public function andMatchContext(string $contextKind, string $attribute, mixed ...$values)
+    public function andMatchContext(string $contextKind, string $attribute, ...$values)
     {
         $newClause = [
             "contextKind" => $contextKind,
@@ -105,7 +105,7 @@ class FlagRuleBuilder
      * @param mixed[] $values values to compare to
      * @return FlagRuleBuilder the rule builder
      */
-    public function andNotMatch(string $attribute, mixed ...$values)
+    public function andNotMatch(string $attribute, ...$values)
     {
         return $this->andNotMatchContext(LDContext::DEFAULT_KIND, $attribute, ...$values);
     }
@@ -126,7 +126,7 @@ class FlagRuleBuilder
      * @param mixed[] $values values to compare to
      * @return FlagRuleBuilder the rule builder
      */
-    public function andNotMatchContext(string $contextKind, string $attribute, mixed ...$values)
+    public function andNotMatchContext(string $contextKind, string $attribute, ...$values)
     {
         $newClause = [
             "contextKind" => $contextKind,
@@ -146,7 +146,7 @@ class FlagRuleBuilder
      * @param bool|int $variation the value to return if the rule matches the user
      * @return FlagBuilder the flag builder
      */
-    public function thenReturn(bool|int $variation): FlagBuilder
+    public function thenReturn($variation): FlagBuilder
     {
         if (is_bool($variation)) {
             $this->_flagBuilder->booleanFlag();

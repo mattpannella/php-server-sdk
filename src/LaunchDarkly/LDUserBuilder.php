@@ -225,7 +225,7 @@ class LDUserBuilder
      * @param mixed $customValue The attribute value
      * @return LDUserBuilder the same builder
      */
-    public function customAttribute(string $customKey, mixed $customValue): LDUserBuilder
+    public function customAttribute(string $customKey, $customValue): LDUserBuilder
     {
         $this->_custom[$customKey] = $customValue;
         return $this;
@@ -238,7 +238,7 @@ class LDUserBuilder
      * @param mixed $customValue The attribute value
      * @return LDUserBuilder the same builder
      */
-    public function privateCustomAttribute(string $customKey, mixed $customValue): LDUserBuilder
+    public function privateCustomAttribute(string $customKey, $customValue): LDUserBuilder
     {
         $this->_privateAttributeNames[] = $customKey;
         return $this->customAttribute($customKey, $customValue);

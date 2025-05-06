@@ -48,7 +48,7 @@ class EvaluatorHelpers
         LDContext $context,
         string $attributeRef,
         ?string $forContextKind
-    ): mixed {
+    ) {
         $parsed = ($forContextKind === null || $forContextKind === '') ?
             // If no context kind was specified, treat the attribute as just an attribute name, not a reference path
             AttributeReference::fromLiteral($attributeRef) :
@@ -162,7 +162,7 @@ class EvaluatorHelpers
         return false;
     }
 
-    private static function matchAnyClauseValue(Clause $clause, mixed $contextValue): bool
+    private static function matchAnyClauseValue(Clause $clause, $contextValue): bool
     {
         $op = $clause->getOp();
         foreach ($clause->getValues() as $v) {
