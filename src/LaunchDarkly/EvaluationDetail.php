@@ -21,7 +21,7 @@ class EvaluationDetail
      * @param int|null $variationIndex the index of the flag variation, or null if it was the default value
      * @param EvaluationReason $reason evaluation reason properties
      */
-    public function __construct(mixed $value, ?int $variationIndex, EvaluationReason $reason)
+    public function __construct($value, ?int $variationIndex, EvaluationReason $reason)
     {
         $this->_value = $value;
         $this->_variationIndex = $variationIndex;
@@ -34,7 +34,7 @@ class EvaluationDetail
      *
      * @return mixed the flag value
      */
-    public function getValue(): mixed
+    public function getValue()
     {
         return $this->_value;
     }

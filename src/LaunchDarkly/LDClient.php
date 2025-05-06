@@ -194,7 +194,7 @@ class LDClient
      * @return mixed The variation for the given context, or `$defaultValue` if the flag cannot be evaluated
      * @see \LaunchDarkly\LDClient::variationDetail()
      */
-    public function variation(string $key, $context, mixed $defaultValue = false): mixed
+    public function variation(string $key, $context, $defaultValue = false)
     {
         $detail = $this->variationDetailInternal($key, $context, $defaultValue, $this->_eventFactoryDefault);
         return $detail->getValue();
@@ -214,7 +214,7 @@ class LDClient
      * @return EvaluationDetail An EvaluationDetail object that includes the feature flag value
      * and evaluation reason
      */
-    public function variationDetail(string $key, $context, mixed $defaultValue = false): EvaluationDetail
+    public function variationDetail(string $key, $context, $defaultValue = false): EvaluationDetail
     {
         return $this->variationDetailInternal($key, $context, $defaultValue, $this->_eventFactoryWithReasons);
     }
@@ -227,7 +227,7 @@ class LDClient
      *
      * @return EvaluationDetail
      */
-    private function variationDetailInternal(string $key, $contextOrUser, mixed $default, EventFactory $eventFactory): EvaluationDetail
+    private function variationDetailInternal(string $key, $contextOrUser, $default, EventFactory $eventFactory): EvaluationDetail
     {
         $context = $contextOrUser instanceof LDUser ? LDContext::fromUser($contextOrUser) : $contextOrUser;
         $default = $this->_get_default($key, $default);
@@ -456,7 +456,7 @@ class LDClient
         }
     }
 
-    protected function _get_default(string $key, mixed $default): mixed
+    protected function _get_default(string $key, $default)
     {
         if (array_key_exists($key, $this->_defaults)) {
             return $this->_defaults[$key];

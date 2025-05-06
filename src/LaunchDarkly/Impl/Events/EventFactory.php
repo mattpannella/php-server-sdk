@@ -35,7 +35,7 @@ class EventFactory
         FeatureFlag $flag,
         LDContext $context,
         EvalResult $result,
-        mixed $default,
+        $default,
         ?FeatureFlag $prereqOfFlag = null
     ): array {
         $detail = $result->getDetail();

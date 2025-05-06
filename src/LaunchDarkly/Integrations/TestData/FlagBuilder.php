@@ -197,7 +197,7 @@ class FlagBuilder
      * @return FlagBuilder the flag builder
      * @deprecated Use {@see \LaunchDarkly\Integrations\TestData\FlagBuilder::valueForAll()}.
      */
-    public function valueForAllUsers(mixed $value): FlagBuilder
+    public function valueForAllUsers($value): FlagBuilder
     {
         return $this->valueForAll($value);
     }
@@ -213,7 +213,7 @@ class FlagBuilder
      * @return FlagBuilder the flag builder
      * @see \LaunchDarkly\Integrations\TestData\FlagBuilder::variationForAll()
      */
-    public function valueForAll(mixed $value): FlagBuilder
+    public function valueForAll($value): FlagBuilder
     {
         return $this->variations($value)->variationForAll(0);
     }
@@ -296,7 +296,7 @@ class FlagBuilder
      * @param mixed[] $variations the the desired variations
      * @return FlagBuilder the flag builder object
      */
-    public function variations(mixed ...$variations): FlagBuilder
+    public function variations(...$variations): FlagBuilder
     {
         $validatedVariations = [];
         foreach ($variations as $value) {
@@ -325,7 +325,7 @@ class FlagBuilder
      *   `thenReturn(int)` to finish the rule, or add more tests with another
      *   method like `andMatch()`
      */
-    public function ifMatch(string $attribute, mixed ...$values): FlagRuleBuilder
+    public function ifMatch(string $attribute, ...$values): FlagRuleBuilder
     {
         return $this->ifMatchContext(LDContext::DEFAULT_KIND, $attribute, ...$values);
     }
@@ -348,7 +348,7 @@ class FlagBuilder
      *   `thenReturn(int)` to finish the rule, or add more tests with another
      *   method like `andMatch()`
      */
-    public function ifMatchContext(string $contextKind, string $attribute, mixed ...$values): FlagRuleBuilder
+    public function ifMatchContext(string $contextKind, string $attribute, ...$values): FlagRuleBuilder
     {
         $flagRuleBuilder = new FlagRuleBuilder($this);
         return $flagRuleBuilder->andMatchContext($contextKind, $attribute, ...$values);
@@ -372,7 +372,7 @@ class FlagBuilder
      *   `thenReturn(int)` to finish the rule, or add more tests with another
      *   method like `andMatch()`
      */
-    public function ifNotMatch(string $attribute, mixed ...$values): FlagRuleBuilder
+    public function ifNotMatch(string $attribute, ...$values): FlagRuleBuilder
     {
         return $this->ifNotMatchContext(LDContext::DEFAULT_KIND, $attribute, ...$values);
     }
@@ -397,7 +397,7 @@ class FlagBuilder
      *   `thenReturn(int)` to finish the rule, or add more tests with another
      *   method like `andMatch()`
      */
-    public function ifNotMatchContext(string $contextKind, string $attribute, mixed ...$values): FlagRuleBuilder
+    public function ifNotMatchContext(string $contextKind, string $attribute, ...$values): FlagRuleBuilder
     {
         $flagRuleBuilder = new FlagRuleBuilder($this);
         return $flagRuleBuilder->andNotMatchContext($contextKind, $attribute, ...$values);
