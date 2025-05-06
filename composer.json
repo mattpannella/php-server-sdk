@@ -1,5 +1,6 @@
 {
     "name": "launchdarkly/server-sdk",
+    "version": "5.3.1",
     "description": "Official LaunchDarkly SDK for PHP",
     "keywords": [
         "launchdarkly",
