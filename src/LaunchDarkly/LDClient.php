@@ -194,7 +194,7 @@ class LDClient
      * @return mixed The variation for the given context, or `$defaultValue` if the flag cannot be evaluated
      * @see \LaunchDarkly\LDClient::variationDetail()
      */
-    public function variation(string $key, LDContext|LDUser $context, mixed $defaultValue = false): mixed
+    public function variation(string $key, $context, mixed $defaultValue = false): mixed
     {
         $detail = $this->variationDetailInternal($key, $context, $defaultValue, $this->_eventFactoryDefault);
         return $detail->getValue();
@@ -214,7 +214,7 @@ class LDClient
      * @return EvaluationDetail An EvaluationDetail object that includes the feature flag value
      * and evaluation reason
      */
-    public function variationDetail(string $key, LDContext|LDUser $context, mixed $defaultValue = false): EvaluationDetail
+    public function variationDetail(string $key, $context, mixed $defaultValue = false): EvaluationDetail
     {
         return $this->variationDetailInternal($key, $context, $defaultValue, $this->_eventFactoryWithReasons);
     }
@@ -227,7 +227,7 @@ class LDClient
      *
      * @return EvaluationDetail
      */
-    private function variationDetailInternal(string $key, LDContext|LDUser $contextOrUser, mixed $default, EventFactory $eventFactory): EvaluationDetail
+    private function variationDetailInternal(string $key, $contextOrUser, mixed $default, EventFactory $eventFactory): EvaluationDetail
     {
         $context = $contextOrUser instanceof LDUser ? LDContext::fromUser($contextOrUser) : $contextOrUser;
         $default = $this->_get_default($key, $default);
@@ -328,7 +328,7 @@ class LDClient
      * @param int|float|null $metricValue A numeric value used by the LaunchDarkly experimentation feature in
      *   numeric custom metrics; can be omitted if this event is used by only non-numeric metrics
      */
-    public function track(string $eventName, LDContext|LDUser $context, mixed $data = null, int|float|null $metricValue = null): void
+    public function track(string $eventName, $context, $data = null, $metricValue = null): void
     {
         $context = $context instanceof LDUser ? LDContext::fromUser($context) : $context;
         if (!$context->isValid()) {
@@ -352,7 +352,7 @@ class LDClient
      * @param LDContext|LDUser $context The context or user to register
      * @return void
      */
-    public function identify(LDContext|LDUser $context): void
+    public function identify($context): void
     {
         $context = $context instanceof LDUser ? LDContext::fromUser($context) : $context;
         if (!$context->isValid()) {
@@ -383,7 +383,7 @@ class LDClient
      *
      * @return FeatureFlagsState a FeatureFlagsState object (will never be null)
      */
-    public function allFlagsState(LDContext|LDUser $context, array $options = []): FeatureFlagsState
+    public function allFlagsState($context, array $options = []): FeatureFlagsState
     {
         $context = $context instanceof LDUser ? LDContext::fromUser($context) : $context;
         if (!$context->isValid()) {
@@ -431,7 +431,7 @@ class LDClient
      * @param LDContext|LDUser $context The evaluation context or user
      * @return string The hash value
      */
-    public function secureModeHash(LDContext|LDUser $context): string
+    public function secureModeHash($context): string
     {
         $context = $context instanceof LDUser ? LDContext::fromUser($context) : $context;
         if (!$context->isValid()) {
