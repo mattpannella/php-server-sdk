@@ -2,6 +2,9 @@
 
 All notable changes to the LaunchDarkly PHP SDK will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org).
 
+## 5.3.0 - Tovuti port to PHP 7.4
+ - Removed all php 8 specific syntax
+
 ## [5.2.1](https://github.com/launchdarkly/php-server-sdk/compare/5.2.0...5.2.1) (2024-01-23)
 
 
