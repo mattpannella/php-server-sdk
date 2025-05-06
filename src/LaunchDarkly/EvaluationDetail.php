@@ -12,7 +12,7 @@ namespace LaunchDarkly;
 class EvaluationDetail
 {
     private ?int $_variationIndex = null;
-    private mixed $_value = null;
+    private $_value = null;
     private EvaluationReason $_reason;
 
     /**
